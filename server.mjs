@@ -1,10 +1,3 @@
-// import { createServer } from 'http';
-
-// createServer((req, res) => {
-//   res.write('Hello World!');
-//   res.end();
-// }).listen(process.env.PORT);
-
 import express from 'express';
 import { createServer } from 'http';
 import { resolve } from 'path';
@@ -12,11 +5,12 @@ import { resolve } from 'path';
 const app = express();
 
 // Sirve los archivos estáticos desde la carpeta 'src'
-app.use(express.static(resolve(__dirname, '../src')));
+const staticDir = resolve(new URL(import.meta.url).pathname, '../src');
+app.use(express.static(staticDir));
 
 // Ruta de inicio
 app.get('/', (req, res) => {
-  res.sendFile(resolve(__dirname, '../src/index.html'));
+  res.sendFile(resolve(staticDir, 'index.html'));
 });
 
 // Crea el servidor HTTP
