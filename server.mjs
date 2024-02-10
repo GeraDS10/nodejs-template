@@ -11,7 +11,7 @@ const staticDir = resolve(__dirname, '../src');
 app.use(express.static(staticDir));
 
 // Importar las rutas desde routes/index.js
-import indexRouter from './routes/index.js';
+import indexRouter from './src/routes/index';
 
 // Utilizar las rutas importadas
 app.use('/api', indexRouter);
