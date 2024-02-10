@@ -4,13 +4,16 @@ import { resolve } from 'path';
 
 const app = express();
 
-// Sirve los archivos estáticos desde la carpeta 'src'
-const staticDir = resolve(new URL(import.meta.url).pathname, '../src');
+// Define el directorio estático
+const staticDir = resolve(__dirname, '../src');
+
+// Sirve los archivos estáticos desde el directorio 'src'
 app.use(express.static(staticDir));
 
 // Ruta de inicio
 app.get('/', (req, res) => {
-  res.sendFile(resolve(staticDir, 'index.js'));
+  // Envía el archivo HTML en la ruta de inicio
+  res.sendFile(resolve(staticDir, 'index.html'));
 });
 
 // Crea el servidor HTTP
