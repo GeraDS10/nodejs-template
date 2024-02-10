@@ -225,12 +225,12 @@ const getPeluqueriaById = async (req, res) => {
 const createPeluquerias = async (req, res) => {
     try {
         const { fecha, nombre, raza, alergico, traslado, corte, banio, valor, observaciones, idPerro } = req.body;
-        const queryString = 'INSERT INTO peluquerias (fecha, nombre, raza, alergico, traslado, corte, banio, valor, observaciones, idPerro) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)';
-        const queryValues = [fecha, nombre, raza, alergico, traslado, corte, banio, valor, observaciones, idPerro];
+        const queryString = 'INSERT INTO peluquerias (fecha, raza, alergico, traslado, corte, banio, valor, observaciones, idPerro) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
+        const queryValues = [fecha, raza, alergico, traslado, corte, banio, valor, observaciones, idPerro];
         await pool.query(queryString, queryValues);
         res.status(201).json({ message: "Peluqueria agregada satisfactoriamente",
         body: {
-            peluqueria: {fecha, nombre, raza, alergico, traslado, corte, banio, valor, observaciones, idPerro}
+            peluqueria: {fecha, raza, alergico, traslado, corte, banio, valor, observaciones, idPerro}
         } });
     } catch (error) {
         console.error('Error al crear peluquería:', error);
