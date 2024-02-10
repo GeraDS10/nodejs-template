@@ -1,25 +1,20 @@
 import express from 'express';
 import { createServer } from 'http';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const app = express();
 
 // Obtener la ruta del directorio estático
-const staticDir = resolve(fileURLToPath(import.meta.url), '../src');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const staticDir = resolve(__dirname, '../src');
 app.use(express.static(staticDir));
 
-// Ruta de inicio
-app.get('/', (req, res) => {
-  console.log('Se recibió una solicitud GET en la ruta /');
-  res.sendFile(resolve(staticDir, 'index.html'));
-});
+// Importar las rutas desde routes/index.js
+import indexRouter from './routes/index.js';
 
-// Ruta de otra solicitud
-app.get('/otra-ruta', (req, res) => {
-  console.log('Se recibió una solicitud GET en la ruta /otra-ruta');
-  res.send('Respuesta desde la ruta /otra-ruta');
-});
+// Utilizar las rutas importadas
+app.use('/api', indexRouter);
 
 // Crea el servidor HTTP
 const server = createServer(app);
