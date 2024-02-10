@@ -1,6 +1,7 @@
 import express from 'express';
 import { createServer } from 'http';
-import { resolve, fileURLToPath } from 'path';
+import { resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 
