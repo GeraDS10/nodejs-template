@@ -10,6 +10,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const staticDir = resolve(__dirname, '../app');
 app.use(express.static(staticDir));
 
+// Middleware para analizar el cuerpo de las solicitudes JSON
+app.use(express.json());
+
 // Importar las rutas desde routes/index.js
 import indexRouter from './routes/index.js';
 
