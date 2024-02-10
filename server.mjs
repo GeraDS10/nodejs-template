@@ -10,7 +10,7 @@ app.use(express.static(staticDir));
 
 // Ruta de inicio
 app.get('/', (req, res) => {
-  res.sendFile(resolve(staticDir, 'index.html'));
+  res.sendFile(resolve(staticDir, 'index.js'));
 });
 
 // Crea el servidor HTTP
