@@ -5,8 +5,8 @@
   "author": "Aiden Bai",
   "license": "MIT",
   "scripts": {
-    "start": "node server.mjs",
-    "dev": "nodemon src/index.js"
+    "start": "node app/server.mjs",
+    "dev": "nodemon app/server.mjs"
   },
   "dependencies": {
     "express": "^4.18.2",

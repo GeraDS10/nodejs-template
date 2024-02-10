@@ -7,11 +7,11 @@ const app = express();
 
 // Obtener la ruta del directorio estático
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const staticDir = resolve(__dirname, '../src');
+const staticDir = resolve(__dirname, '../app');
 app.use(express.static(staticDir));
 
 // Importar las rutas desde routes/index.js
-import indexRouter from '../src/routes/index';
+import indexRouter from './routes/index.js';
 
 // Utilizar las rutas importadas
 app.use('/api', indexRouter);
